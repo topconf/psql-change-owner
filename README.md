@@ -1,5 +1,5 @@
 # psql-change-owner
-Script for change owner on PostgreSQL database objects (beta)
+Script for change owner on PostgreSQL database objects to new role (beta)
 
 Usage:  
 pco-sequences \<database\> \<new_role\>  
