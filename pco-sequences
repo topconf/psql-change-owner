@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for tbl in `psql -U postgres -qAt -c "select sequence_name from information_schema.sequences where sequence_schema = 'public';" $1` ; do
+psql -U postgres -c "alter table \"$tbl\" owner to $2" $1 ;
+done
+
+exit 0
