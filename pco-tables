@@ -1,8 +1,12 @@
 #!/bin/bash
 
-for tbl in `psql -U postgres -qAt -c "select tablename from pg_tables where schemaname = 'public';" $1` ; do
+database=$1
+schema=$2
+role=$3
+
+for tbl in `psql -U postgres -qAt -c "select tablename from pg_tables where schemaname = '$schema';" $database` ; do
 echo "# alter table: "$tbl;
-psql -U postgres -c "alter table \"$tbl\" owner to $2" $1 ;
+psql -U postgres -c "alter table \"$schema\".\"$tbl\" owner to $role" $database ;
 done
 
 exit 0
